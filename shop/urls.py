@@ -16,13 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from apps.views import HomePage
+from apps.views import HomePage, StorePage, ProductPage
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomePage.as_view(), name='home'),
+    path('store/<str:c>/', StorePage, name='store'),
+    path('product/<int:pk>/', ProductPage, name='product'),
 ]
 
 if settings.DEBUG:

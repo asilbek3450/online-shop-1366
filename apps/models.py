@@ -10,6 +10,9 @@ class ProductCategory(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_products_count(self):
+        pass
 
 
 class Product(models.Model):
@@ -21,6 +24,12 @@ class Product(models.Model):
 
     def birinchi_image(self):
         return self.images.first().image
+    
+    def get_skidka_price(self):
+        return self.price * 70 / 100
+    
+    def get_all_images(self):
+        return [image.image for image in self.images.all()]
 
 
     def __str__(self):
