@@ -18,8 +18,8 @@
 
 									{% for category in categories %}
 								<div class="input-checkbox">
-									<input type="checkbox" id="category-1">
-									<label for="category-1">
+									<input type="checkbox" id="category-{{category.id}}">
+									<label for="category-{{category.id}}">
 										<span></span>
 										{{category.name}}
 										<small>(0)</small>
