@@ -16,16 +16,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from apps.views import HomePage, StorePage, ProductPage
+from apps import views
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', HomePage.as_view(), name='home'),
-    path('store/<str:c>/', StorePage, name='store'),
-    path('product/<int:pk>/', ProductPage, name='product'),
+    path('', views.HomePage.as_view(), name='home'),
+    path('store/<str:c>/', views.StorePage, name='store'),
+    path('product/<int:pk>/', views.ProductPage, name='product'),
+    path('cart/', views.cart_detail, name='cart'),
+    path('add-to-cart/<int:pk>/', views.add_to_cart, name='add-to-cart'),
+    path('remove-from-cart/<int:pk>/', views.remove_from_cart, name='remove-from-cart'),
+
+    path('login/', views.login_view, name='login'),
+    path('register/', views.register_view, name='register'),
+    path('logout/', views.logout_view, name='logout'),
+
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
