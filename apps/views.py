@@ -85,7 +85,7 @@ def ProductPage(request, pk):
 def cart_detail(request):
     cart = Cart.objects.filter(user=request.user).first()  # Foydalanuvchining savatini olish
     if not cart:
-        return render(request, 'cart.html', {'error': 'Savatda mahsulotlar mavjud emas'})
+        return render(request, 'checkout.html', {'error': 'Savatda mahsulotlar mavjud emas'})
     
     cart_items = cart.items.all()  # Savatdagi mahsulotlar
     total_price = cart.get_total_price()  # Savatdagi jami narx
