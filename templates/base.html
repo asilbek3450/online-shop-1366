@@ -44,7 +44,11 @@
 					</ul>
 					<ul class="header-links pull-right">
 						<li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-						<li><a href="#"><i class="fa fa-user-o"></i> Mening akkauntim</a></li>
+						{% if user.is_authenticated %}
+							<li><a href="{% url 'logout' %}"><i class="fa fa-user-o"></i> Chiqish</a></li>
+						{% else %}
+							<li><a href="{% url 'login' %}"><i class="fa fa-user-o"></i> Kirish</a></li>
+						{% endif %}
 					</ul>
 				</div>
 			</div>
@@ -105,7 +109,7 @@
 									</a>
 									<div class="cart-dropdown">
 										<div class="cart-list">
-											{% for item in cart_products %}
+											{% for item in cart_items %}
 											<div class="product-widget">
 												<div class="product-img">
 													<img src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
@@ -123,7 +127,7 @@
 											<h5>YIG'INDI: ${{ cart_total }}</h5>
 										</div>
 										<div class="cart-btns">
-											<a href="#">Savatchaga o‘tish</a>
+											<a href="{% url 'cart' %}">Savatga o‘tish</a>
 											<a href="#">To‘lov <i class="fa fa-arrow-circle-right"></i></a>
 										</div>
 									</div>

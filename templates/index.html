@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -12,7 +13,7 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="../../../../../electro-master/img/shop01.png" alt="">
+								<img src="{% static 'img/shop01.png' %}" alt="">
 							</div>
 							<div class="shop-body">
 								<h3>Laptop<br>Collection</h3>
@@ -26,7 +27,7 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="../../../../../electro-master/img/shop03.png" alt="">
+								<img src="{% static 'img/shop03.png' %}" alt="">
 							</div>
 							<div class="shop-body">
 								<h3>Accessories<br>Collection</h3>
@@ -40,7 +41,7 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="../../../../../electro-master/img/shop02.png" alt="">
+								<img src="{% static 'img/shop02.png' %}" alt="">
 							</div>
 							<div class="shop-body">
 								<h3>Cameras<br>Collection</h3>
@@ -69,10 +70,9 @@
 							<h3 class="title">New Products</h3>
 							<div class="section-nav">
 								<ul class="section-tab-nav tab-nav">
-									<li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li>
-									<li><a data-toggle="tab" href="#tab1">Smartphones</a></li>
-									<li><a data-toggle="tab" href="#tab1">Cameras</a></li>
-									<li><a data-toggle="tab" href="#tab1">Accessories</a></li>
+									{% for category in categories %}
+									<li><a data-toggle="tab" href="#tab_{{ category.name }}">{{ category.name }}</a></li>
+									{% endfor %}
 								</ul>
 							</div>
 						</div>
@@ -196,10 +196,20 @@
 							<h3 class="title">Top selling</h3>
 							<div class="section-nav">
 								<ul class="section-tab-nav tab-nav">
-									<li class="active"><a data-toggle="tab" href="#tab2">Laptops</a></li>
-									<li><a data-toggle="tab" href="#tab2">Smartphones</a></li>
-									<li><a data-toggle="tab" href="#tab2">Cameras</a></li>
-									<li><a data-toggle="tab" href="#tab2">Accessories</a></li>
+				<!-- section title -->
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title">New Products</h3>
+							<div class="section-nav">
+								<ul class="section-tab-nav tab-nav">
+									{% for category in categories %}
+									<li><a data-toggle="tab" href="#tab_{{ category.name }}">{{ category.name }}</a></li>
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /section title -->
 								</ul>
 							</div>
 						</div>
